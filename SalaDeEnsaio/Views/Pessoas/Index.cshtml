@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SalaDeEnsaio.Models.Pessoa>
+
+@{
+    ViewBag.Title = "Pessoas";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-lg-2">
+        @Html.ActionLink("Inserir nova pessoa", "Create", new { }, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-lg-4">
+        <input type="text" id="search" class="form-control" placeholder="Pesquisar por nome" autofocus />
+    </div>
+</div>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nascimento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td class="nome">
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @if (item.Nascimento.HasValue)
+                    {
+                        @String.Format("{0}/{1}/{2}",
+                        item.Nascimento.Value.Day.ToString().PadLeft(2, '0'),
+                        item.Nascimento.Value.Month.ToString().PadLeft(2, '0'),
+                        item.Nascimento.Value.Year);
+                    }
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit","Pessoas", new { id = item.Id })" class="btn" title="Editar">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>
+                    <a href="@Url.Action("Delete","Pessoas", new { id = item.Id })" class="btn" title="Excluir">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script src="~/Scripts/app/pessoa.js"></script>
+}

@@ -29,5 +29,8 @@ namespace SalaDeEnsaio.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<ContaReceber> ContasReceber { get; set; }
     }
 }

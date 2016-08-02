@@ -1,0 +1,13 @@
+﻿@model SalaDeEnsaio.Models.Pessoa
+
+@{
+    ViewBag.Title = "Inserir pessoa";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm())
+{
+    @RenderPage("_Form.cshtml")
+}

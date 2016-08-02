@@ -1,0 +1,15 @@
+﻿@model SalaDeEnsaio.Models.Pessoa
+
+@{
+    ViewBag.Title = "Editar pessoa";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+
+    @RenderPage("_Form.cshtml")
+}
