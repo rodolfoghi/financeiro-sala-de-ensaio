@@ -1,3 +1,77 @@
-﻿@{
+﻿@model SalaDeEnsaio.Models.HomeViewModels
+
+@{
     ViewBag.Title = "Home";
-}    
+}
+
+<br />
+<div class="row">
+    <div class="panel panel-default col-md-5 alert alert-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">Vencidos</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Pessoa</th>
+                        <th>Vencimento</th>
+                        <th>Valor</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var vencido in Model.Vencidos)
+                    {                        
+                        <tr>                            
+                            <td>
+                                <a href="@Url.Action("Edit","ContasReceber", new { id = vencido.Id })" title="Editar">
+                                    @(vencido.Pessoa.Nome)
+                                </a>
+                            </td>
+                            <td>
+                                @(string.Format("{0}/{1}/{2}",
+                            vencido.Vencimento.Day.ToString().PadLeft(2, '0'),
+                            vencido.Vencimento.Month.ToString().PadLeft(2, '0'),
+                            vencido.Vencimento.Year))
+                            </td>
+                            <td align="right">
+                                @(vencido.Valor.ToString("C"))
+                            </td>                            
+                        </tr>                       
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="panel panel-default col-md-5 alert alert-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Vencem hoje</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Pessoa</th>
+                        <th>Valor</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var venceHoje in Model.VencemHoje)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("Edit","ContasReceber", new { id = venceHoje.Id })" title="Editar">
+                                    @(venceHoje.Pessoa.Nome)
+                                </a>
+                            </td>
+                            <td align="right">
+                                @(venceHoje.Valor.ToString("C"))
+                            </td>                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

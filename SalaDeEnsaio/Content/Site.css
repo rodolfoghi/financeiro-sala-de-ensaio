@@ -36,3 +36,20 @@ textarea {
     width: 100%;
     display: block;
 }
+
+div.recebido.true {
+    background-image: url('Imagens/pay-check_20x15.png');
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 15px;
+    margin-left: 10px;
+}
+
+.compose-column{
+    display: flex;
+    vertical-align: middle;
+}
+
+tr.recebido.true{
+    text-decoration: line-through;
+}

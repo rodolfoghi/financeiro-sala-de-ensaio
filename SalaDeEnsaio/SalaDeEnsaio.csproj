@@ -187,9 +187,22 @@
     <Compile Include="Migrations\201608020018091_CreateContaReceber.Designer.cs">
       <DependentUpon>201608020018091_CreateContaReceber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608032253418_CreatePropertyTurma.cs" />
+    <Compile Include="Migrations\201608032253418_CreatePropertyTurma.Designer.cs">
+      <DependentUpon>201608032253418_CreatePropertyTurma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608032302206_AddPropertiesOnPessoa.cs" />
+    <Compile Include="Migrations\201608032302206_AddPropertiesOnPessoa.Designer.cs">
+      <DependentUpon>201608032302206_AddPropertiesOnPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608040035295_RemoveOnDeleteCascade.cs" />
+    <Compile Include="Migrations\201608040035295_RemoveOnDeleteCascade.Designer.cs">
+      <DependentUpon>201608040035295_RemoveOnDeleteCascade.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContaReceber.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pessoa.cs" />
@@ -203,12 +216,13 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Imagens\group-of-people.png" />
     <Content Include="Content\Imagens\navbar-brand.png" />
+    <Content Include="Content\Imagens\pay-check_20x15.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\contas-receber.js" />
     <Content Include="Scripts\app\pessoa.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -265,9 +279,9 @@
     <Content Include="Views\Pessoas\_Form.cshtml" />
     <Content Include="Views\ContasReceber\Create.cshtml" />
     <Content Include="Views\ContasReceber\Delete.cshtml" />
-    <Content Include="Views\ContasReceber\Details.cshtml" />
     <Content Include="Views\ContasReceber\Edit.cshtml" />
     <Content Include="Views\ContasReceber\Index.cshtml" />
+    <Content Include="Views\ContasReceber\_Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608012035504_Initial.resx">
@@ -278,6 +292,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608020018091_CreateContaReceber.resx">
       <DependentUpon>201608020018091_CreateContaReceber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608032253418_CreatePropertyTurma.resx">
+      <DependentUpon>201608032253418_CreatePropertyTurma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608032302206_AddPropertiesOnPessoa.resx">
+      <DependentUpon>201608032302206_AddPropertiesOnPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608040035295_RemoveOnDeleteCascade.resx">
+      <DependentUpon>201608040035295_RemoveOnDeleteCascade.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SalaDeEnsaio.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using SalaDeEnsaio.Models;
 
 namespace SalaDeEnsaio.Controllers
 {
@@ -17,29 +14,18 @@ namespace SalaDeEnsaio.Controllers
         // GET: ContasReceber
         public ActionResult Index()
         {
-            var contasReceber = db.ContasReceber.Include(c => c.Pessoa);
-            return View(contasReceber.ToList());
-        }
+            var contasReceber = db.ContasReceber
+                                    .Include(c => c.Pessoa)
+                                    .OrderByDescending(x => x.Vencimento);
 
-        // GET: ContasReceber/Details/5
-        public ActionResult Details(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ContaReceber contaReceber = db.ContasReceber.Find(id);
-            if (contaReceber == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contaReceber);
+            return View(contasReceber.ToList());
         }
 
         // GET: ContasReceber/Create
         public ActionResult Create()
         {
-            ViewBag.PessoaId = new SelectList(db.Pessoas, "Id", "Nome");
+            var pessoas = db.Pessoas.OrderBy(x => x.Nome);
+            ViewBag.PessoaId = new SelectList(pessoas, "Id", "Nome");
             return View();
         }
 
@@ -48,7 +34,7 @@ namespace SalaDeEnsaio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Descricao,Valor,Recebido,PessoaId,Vencimento")] ContaReceber contaReceber)
+        public ActionResult Create([Bind(Include = "Id,Descricao,Valor,Recebido,PessoaId,Vencimento,Turma")] ContaReceber contaReceber)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +59,10 @@ namespace SalaDeEnsaio.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PessoaId = new SelectList(db.Pessoas, "Id", "Nome", contaReceber.PessoaId);
+
+            var pessoas = db.Pessoas.OrderBy(x => x.Nome);
+            ViewBag.PessoaId = new SelectList(pessoas, "Id", "Nome", contaReceber.PessoaId);
+
             return View(contaReceber);
         }
 
@@ -82,7 +71,7 @@ namespace SalaDeEnsaio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Descricao,Valor,Recebido,PessoaId,Vencimento")] ContaReceber contaReceber)
+        public ActionResult Edit([Bind(Include = "Id,Descricao,Valor,Recebido,PessoaId,Vencimento,Turma")] ContaReceber contaReceber)
         {
             if (ModelState.IsValid)
             {

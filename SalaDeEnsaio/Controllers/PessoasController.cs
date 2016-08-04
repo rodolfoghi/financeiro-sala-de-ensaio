@@ -35,7 +35,7 @@ namespace SalaDeEnsaio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Nascimento")] Pessoa pessoa)
+        public ActionResult Create([Bind(Include = "Id,Nome,Nascimento,Telefone,Celular,Email,Responsavel")] Pessoa pessoa)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace SalaDeEnsaio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Nascimento")] Pessoa pessoa)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Nascimento,Telefone,Celular,Email,Responsavel")] Pessoa pessoa)
         {
             if (ModelState.IsValid)
             {
@@ -111,6 +111,7 @@ namespace SalaDeEnsaio.Controllers
             Pessoa pessoa = db.Pessoas.Find(id);
             db.Pessoas.Remove(pessoa);
             db.SaveChanges();
+            
             return RedirectToAction("Index");
         }
 

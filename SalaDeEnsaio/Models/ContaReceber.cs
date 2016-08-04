@@ -32,5 +32,8 @@ namespace SalaDeEnsaio.Models
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime Vencimento { get; set; }
+
+        [Display(Name = "Turma")]
+        public string Turma { get; set; }
     }
 }

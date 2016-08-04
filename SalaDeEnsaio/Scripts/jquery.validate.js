@@ -1046,8 +1046,9 @@ $.extend($.validator, {
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/number
-		number: function( value, element ) {
-			return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(value);
+		number: function (value, element) {
+		    return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+                // /^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(value);		        
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/digits
@@ -1115,8 +1116,9 @@ $.extend($.validator, {
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/range
-		range: function( value, element, param ) {
-			return this.optional(element) || ( value >= param[0] && value <= param[1] );
+		range: function (value, element, param) {
+		    var globalizedValue = value.replace(",", ".");
+		    return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/equalTo

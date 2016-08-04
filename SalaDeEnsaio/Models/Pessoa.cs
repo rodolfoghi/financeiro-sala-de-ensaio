@@ -18,5 +18,20 @@ namespace SalaDeEnsaio.Models
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime? Nascimento { get; set; }
+
+        [Display(Name = "Telefone")]
+        [Phone]
+        public string Telefone { get; set; }
+
+        [Display(Name = "Celular")]
+        [Phone]
+        public string Celular { get; set; }
+
+        [Display(Name = "E-mail")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Display(Name = "Responsável")]
+        public string Responsavel { get; set; }
     }
 }
