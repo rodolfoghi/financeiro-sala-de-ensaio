@@ -56,7 +56,7 @@
                 </td>
                 <td align="right">
                     <div class="compose-column">
-                        @Html.DisplayFor(modelItem => item.Valor)
+                        @(item.Valor.ToString("c"))
                         <div class="recebido @(item.Recebido.ToString().ToLower())"></div>
                     </div>
                 </td>

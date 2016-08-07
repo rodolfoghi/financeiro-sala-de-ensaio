@@ -21,10 +21,7 @@
             <th></th>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nascimento)
-            </th>
+            </th>            
             <th>
                 @Html.DisplayNameFor(model => model.Telefone)
             </th>
@@ -36,6 +33,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Responsavel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nascimento)
             </th>
         </tr>
     </thead>
@@ -54,16 +54,7 @@
                 </td>
                 <td class="nome">
                     @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @if (item.Nascimento.HasValue)
-                    {
-                        string.Format("{0}/{1}/{2}",
-                        item.Nascimento.Value.Day.ToString().PadLeft(2, '0'),
-                        item.Nascimento.Value.Month.ToString().PadLeft(2, '0'),
-                        item.Nascimento.Value.Year);
-                    }
-                </td>
+                </td>                
                 <td>
                     @Html.DisplayFor(modelItem => item.Telefone)
                 </td>
@@ -75,6 +66,13 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Responsavel)
+                </td>
+                <td>
+                    @if (item.Nascimento.HasValue)
+                    {
+                        @(item.Nascimento.Value.ToString("dd/MM/yyyy"))
+
+                    }
                 </td>
             </tr>
         }
